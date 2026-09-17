@@ -1,0 +1,176 @@
+/* Alina — app shell styles */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #07080c;
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 16:9 stage fitted to the viewport */
+#stage {
+  position: relative;
+  width: min(100vw, calc(100vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  background: #000;
+  box-shadow: 0 0 120px rgba(0, 0, 0, 0.9);
+}
+
+#canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- overlays ---------- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #e8e4da;
+  pointer-events: none; /* buttons re-enable */
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  background: rgba(5, 6, 10, 0.34);
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+}
+
+h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(40px, 7vw, 72px);
+  letter-spacing: 0.42em;
+  text-indent: 0.42em; /* balance the tracking */
+  color: #f2ede1;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
+}
+
+.tag {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: clamp(13px, 1.6vw, 17px);
+  letter-spacing: 0.14em;
+  color: #b9b4a6;
+}
+
+.hint {
+  margin: 4px 0 0;
+  font-size: clamp(10px, 1.1vw, 12px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6f6c64;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  pointer-events: auto;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Georgia, serif;
+  font-size: clamp(14px, 1.5vw, 17px);
+  letter-spacing: 0.1em;
+  color: #f2ede1;
+  background: rgba(20, 22, 30, 0.72);
+  border: 1px solid rgba(242, 237, 225, 0.28);
+  border-radius: 999px;
+  padding: 12px 30px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.12s ease;
+}
+
+.btn:hover {
+  background: rgba(44, 48, 62, 0.85);
+  border-color: rgba(242, 237, 225, 0.6);
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn:focus-visible {
+  outline: 2px solid rgba(242, 237, 225, 0.7);
+  outline-offset: 3px;
+}
+
+.btn .icon {
+  font-size: 0.8em;
+  line-height: 1;
+}
+
+.btn-primary {
+  background: rgba(58, 84, 70, 0.82);
+  border-color: rgba(214, 236, 220, 0.4);
+  padding: 14px 40px;
+  font-size: clamp(15px, 1.7vw, 18px);
+}
+
+.btn-primary:hover {
+  background: rgba(74, 106, 88, 0.92);
+}
+
+/* ---------- playback controls ---------- */
+#controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2.2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+#controls.dim { opacity: 0.12; }
+#controls:hover { opacity: 1; }
+
+#controls .btn {
+  padding: 8px 20px;
+  font-size: clamp(11px, 1.2vw, 13px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.time {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(10px, 1.1vw, 12px);
+  letter-spacing: 0.08em;
+  color: rgba(232, 228, 218, 0.75);
+  background: rgba(10, 11, 16, 0.55);
+  padding: 7px 12px;
+  border-radius: 6px;
+  min-width: 9ch;
+  text-align: center;
+}
+
+/* ---------- state helpers ---------- */
+.hidden { display: none !important; }
+
+#title-screen.fade-out {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+#end-screen .title-block { background: none; backdrop-filter: none; }

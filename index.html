@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alina — an animated short</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="stage">
+      <canvas id="canvas" width="1280" height="720" aria-label="Animated short film: Alina"></canvas>
+
+      <!-- title / start screen -->
+      <div id="title-screen" class="overlay">
+        <div class="title-block">
+          <h1>ALINA</h1>
+          <p class="tag">an animated short &middot; one take &middot; sound on</p>
+          <button id="start-btn" class="btn btn-primary" type="button">
+            <span class="icon">&#9654;</span> Start
+          </button>
+          <p class="hint">the story begins with the voice — best with sound</p>
+        </div>
+      </div>
+
+      <!-- end screen -->
+      <div id="end-screen" class="overlay hidden">
+        <div class="title-block">
+          <p class="tag">fin</p>
+          <button id="replay-btn" class="btn" type="button">
+            <span class="icon">&#8634;</span> Watch again
+          </button>
+        </div>
+      </div>
+
+      <!-- playback controls -->
+      <div id="controls" class="hidden">
+        <button id="pause-btn" class="btn" type="button" aria-label="Pause or resume">
+          <span class="icon" id="pause-icon">&#10074;&#10074;</span>
+          <span id="pause-label">Pause</span>
+        </button>
+        <button id="restart-btn" class="btn" type="button" aria-label="Restart">
+          <span class="icon">&#8634;</span> Restart
+        </button>
+        <span id="time" class="time">0:00 / 0:28</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- engine + film modules (order matters: dependencies first) -->
+  <script src="js/engine/rng.js"></script>
+  <script src="js/engine/easing.js"></script>
+  <script src="js/engine/draw2d.js"></script>
+  <script src="js/film/sky.js"></script>
+  <script src="js/film/forest.js"></script>
+  <script src="js/film/particles.js"></script>
+  <script src="js/film/bird.js"></script>
+  <script src="js/film/alina.js"></script>
+  <script src="js/film/plane.js"></script>
+  <script src="js/film/camera.js"></script>
+  <script src="js/film/post.js"></script>
+  <script src="js/film/film.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
